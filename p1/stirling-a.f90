@@ -1,17 +1,14 @@
-program stirling
+        program stirling
 
-implicit none
+        implicit none
 
-integer i
-real*8 f
+        integer i
+        real*8 f
 
-f = 1.0d0
+        f = 1.0d0
+        do i=1,20
+            f = f*dfloat(i)
+            write(*,*)i,f
+        enddo
 
-open(10,file='stirling-a.dat')
-do i=1,20
-	f = f*dfloat(i)
-	write(10,*)i,f
-enddo
-close(10)
-
-end program stirling
+        end program stirling

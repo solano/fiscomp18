@@ -1,19 +1,13 @@
-program stirling
+        program stirling
+        implicit none
 
-implicit none
+        integer i
+        real*8 lf
 
-integer i
-real*8 lf
+        lf=0.0d0
+        do i=2,30
+            lf = lf + log(dfloat(i))
+            write(*,*) i,lf,ceiling(lf/log(2.d0))
+        enddo
 
-lf=0.0d0
-
-open(10,file='stirling-b.dat')
-
-do i=2,30
-	lf = lf + log(dfloat(i))
-	write(10,*) i,lf
-enddo
-
-close(10)
-
-end program stirling
+        end program stirling
