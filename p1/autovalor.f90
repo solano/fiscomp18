@@ -7,7 +7,7 @@
         integer i,j,k,n,kmax
 
         parameter (eps = 1.d-8) ! tolerância do erro do autovalor
-        parameter (kmax = 50)  ! número máximo de iterações
+        parameter (kmax = 60)  ! número máximo de iterações
 
         read(*,*) n
         allocate(A(n,n))
@@ -35,7 +35,11 @@
         do while(k <= kmax .and. sigma >= eps)
             ! Norma induzida pelo produto interno
             y = y/sqrt(prod(y,y,n))
-            prec_x = sqrt(prod(x-y,x-y,n))
+            if (lambda < 0) then
+                prec_x = sqrt(prod(x+y,x+y,n))
+            else
+                prec_x = sqrt(prod(x-y,x-y,n))
+            end if
 
             k = k+1
             x = y
