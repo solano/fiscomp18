@@ -1,0 +1,4 @@
+1) (a)
+
+	Usei o tipo real com precisão dupla para representar os fatoriais. O tipo integer seria mais adequado a priori (pois o fatorial de um inteiro é um inteiro), mas 17! é maior que o maior inteiro que pode ser representado nesse tipo e, por overflow, obtemos resultados negativos.
+	A precisão dos resultados (16 algarismos significativos) é  se assumirmos que todos os dígitos perdidos (no caso de 19! e 20!) são 0. Assim, nenhuma informação é realmente perdida.
