@@ -1,36 +1,32 @@
         program media
         implicit none
 
-        integer n
-        real*8 med, dp, x
-        
-        open(10,file='media.in',status='old')
+        integer i, n
+        real*8 med, medquad, dp1, dp2
+        real*8, dimension(:), allocatable :: x
 
-        n = 0
+        read(*,*) n    ! ler tamanho da lista
+        allocate(x(n)) ! alocar memória
+
         med = 0.d0
-        dp = 0.d0
+        medquad = 0.d0
+        dp1 = 0.d0
+        dp2 = 0.d0
 
-        do
-            read(10,*,end=10) x
-            med = med + x
-            n = n+1
+        do i=1,n
+            read(*,*) x(i)
+            med = med + x(i)
+            medquad = medquad + x(i)**2
         end do
+        med = med/dfloat(n)
+        medquad = medquad/dfloat(n)
 
-10      if (n > 0) then
-            med = med/dfloat(n)
-        else
-            goto 30
-        end if
-
-        !ler media.in novamente, para calcular o desvio padrão
-        close(10)
-        open(10,file='media.in',status='old',position='rewind')
-        do
-            read(10,*,end=20) x
-            dp = dp + (x-med)**2
+        do i=1,n
+            dp1 = dp1 + (x(i)-med)**2
         end do
+        dp1 = sqrt(dp1/n)
+        dp2 = sqrt(medquad - med**2)
 
-20      dp = sqrt(dp/dfloat(n))
-        write(*,*) med, dp
+        write(*,*) n, med, dp1, dp2
 
-30      end program media
+        end program media
