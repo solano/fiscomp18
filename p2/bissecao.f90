@@ -3,20 +3,22 @@
 
         real*8 a,b,m,erro,f
         real*8 eps, T
-        integer i
+        integer i, imax
+
+        parameter(imax = 200)
 
         read(*,*) T, eps
 
         i=0
-        a = 1.d-5
-        b = 1-a
-        erro = 10
-        do while (erro >= eps)
+        a = eps
+        b = 1-eps
+        erro = 10.d0
+        do while (erro >= eps .and. i <= imax)
             m = (a+b)/2.d0
             f = m - tanh(m/T)
-            if (f>0) then
+            if (f>0.d0) then
                 b = m
-            else if (f < 0) then
+            else if (f < 0.d0) then
                 a = m
             else
                 a = m

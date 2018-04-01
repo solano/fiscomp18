@@ -7,7 +7,7 @@
 
         parameter(a=0.d0)
         parameter(b=1.d0)
-        
+
         intexato = primitiva(b)-primitiva(a)
 
         do
@@ -35,9 +35,9 @@
             erros = abs(ints-intexato)
 
             !write(*,*) intt, ints
-            !write(*,*) errot,erros
-            write(*,*) log10(h),log10(errot),log10(erros)
-    
+            write(*,*) h, errot, erros
+            !write(*,*) log10(h),log10(errot),log10(erros)
+
         end do
 
 10      end program integrais
