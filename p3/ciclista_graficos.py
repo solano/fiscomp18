@@ -23,6 +23,11 @@ dados_a = np.loadtxt('p3/ciclista_a.dat')
 t, v, x = dados_a.T
 print("Parte (a), distância atingida =",x[-1])
 
+erros = np.abs(v-sol_exata_A(t))/v
+i_erro_max = np.argmax(erros)
+erro_max = erros[i_erro_max]
+print('Curvas coincidem dentro de',erro_max*100,'%%')
+
 plt.figure(dpi=500)
 plt.title('Movimento sem resistência do ar')
 plt.plot(t,v,label='solução numérica')
@@ -45,6 +50,8 @@ print("Parte (b), velocidade terminal (analítica) =",vel_terminal(rho,A))
 # quando a velocidade terminal foi atingida, dentro de 1e-3
 i_vel_term = np.argmax(abs(vel_terminal(rho,A)-v)<1e-3)
 t_term,v_term = t[i_vel_term],v[i_vel_term]
+
+print(vel_terminal(rho,A)-v[-1])
 
 plt.figure(dpi=500)
 plt.title('Movimento com resistência do ar ($A$ = 0,333 m$^2$)')
@@ -80,6 +87,11 @@ v4 = dados_c4.T[1]
 dados_c5 = np.loadtxt('p3/ciclista_c5.dat')
 v5 = dados_c5.T[1]
 t = dados_c1.T[0] # é o mesmo p/ todos
+print(vel_terminal(rho,0.1)-v1[-1])
+print(vel_terminal(rho,0.2)-v2[-1])
+print(vel_terminal(rho,0.3)-v3[-1])
+print(vel_terminal(rho,0.4)-v4[-1])
+print(vel_terminal(rho,0.5)-v5[-1])
 
 plt.figure(dpi=500)
 plt.title('Movimento com resistência do ar ($A$ variável)')
