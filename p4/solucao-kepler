@@ -1,0 +1,4 @@
+t^2/a^3 = 1 (em unidades astronômicas)
+
+t = sqrt(a^3) = a^3/2
+v = 2*pi*a/t = 2*pi/sqrt(a)

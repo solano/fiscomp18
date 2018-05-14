@@ -1,0 +1,13 @@
+algoritmo p/ kepler
+
+determinar velocidade que planeta precisa ter para órbita circular analiti-
+camente
+
+usar essa velocidade na simulação
+fazer muitas órbitas, tipo umas 100k
+ir contando as órbitas uma a uma com um inteiro (usar atan2)
+chegando no número desejado, dividir o tempo total pelo número de órbitas
+- achou o período
+- retornar T^2/a^3
+
+repetir para todos os planetas
