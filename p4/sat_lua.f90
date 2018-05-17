@@ -17,13 +17,10 @@
         !x = (1+e)*a
         !vy = sqrt(GM*(1-e)/(a*(1+e)))
         tmax = 100*86400
-        dt = 100
+        read(*,*) dt  ! leitura em segundos
         x = rgeo
         vy = sqrt(GMt/x)
-        y = 0
-        vx = 0
-        dphi=0
-        dr = 0
+        y=0; vx=0; dphi=0; dr=0
         i=0
         do while (i*dt <= tmax)
             xl = rl*cos(2*pi*i*dt/tl)
