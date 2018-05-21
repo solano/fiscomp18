@@ -9,7 +9,7 @@
 
         pi = 4d0*atan(1d0)
         GM = 4d0*pi*pi
-        n_orbitas = 2
+        n_orbitas = 20
 
         do
             read(*,*,end=10) dt,a
@@ -31,7 +31,7 @@
                     t_per = i*dt
                     p = p+1
                 end if
-                
+
                 y = y_temp
                 i = i+1
             end do

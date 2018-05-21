@@ -9,14 +9,14 @@
         pi = 4d0*atan(1d0)
         GMt = 6.6743e-11*5.9736e24
         GMl = GMt*1.23e-2
-        rl = 384400e3   
+        rl = 384400e3
         tl = 27.32*86400
         rgeo = 42244e3
 
         !read(*,*) tmax, dt, a, e
         !x = (1+e)*a
         !vy = sqrt(GM*(1-e)/(a*(1+e)))
-        tmax = 100*86400
+        tmax = 200*86400
         read(*,*) dt  ! leitura em segundos
         x = rgeo
         vy = sqrt(GMt/x)
@@ -32,10 +32,13 @@
             do while (dphi<0)
                 dphi = dphi+2*pi
             end do
+            do while (dphi > pi)
+                dphi = dphi-2*pi
+            end do
             dr = rst-rgeo
 
             write(*,*) i*dt/86400, x, y, vx, vy, dphi, dr
-            
+
             vx = vx - GMt*x*dt/(rst**3) - GMl*(x-xl)*dt/(rl**3)
             x = x + vx*dt
             vy = vy - GMt*y*dt/(rst**3) - GMl*(y-yl)*dt/(rl**3)

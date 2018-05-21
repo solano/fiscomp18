@@ -1,2 +1,5 @@
 P1 (a) - planetas.f90
 P1 (b) - kepler.f90
+P1 (c) - terra_jupiter.f90
+P2     - sat_lua.f90
+P3     - n_corpos.f90
